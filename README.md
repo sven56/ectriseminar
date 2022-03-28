@@ -1,0 +1,2 @@
+# ectriseminar
+Econoemtrie seminar
