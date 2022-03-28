@@ -1,4 +1,5 @@
 # ectriseminar
 Econoemtrie seminar
 
-HOMOOOOOS
+HOMOOOOO
+ik zou dit moeten begrijpen
