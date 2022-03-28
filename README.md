@@ -1,5 +1,4 @@
 # ectriseminar
 Econoemtrie seminar
 
-HOMOOOOO
-ik zou dit moeten begrijpen
+Hey pieter ewa
