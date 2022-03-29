@@ -53,9 +53,20 @@ sqrt(mean((ridge.pred - y_test)^2))
 
 TIME = T+1
 prices & promo & seasonality voor T+1 => X
-alles behalve seaonality voor T => X.1
+alles behalve seaonality voor T => X
+
+lags: prices & promo
+lags: alles behalve seasonality
 
 Y(T+1) <- X(T+1) + X.1(T)
+
+Y(T+1) <- X + X.1
+
+X: Prices, promo, seasonality van volgende week
+    rest van deze week
+    
+X.1: Prices, promo van deze week
+      rest, behalve seasonality, van vorige week
 
 
 
