@@ -10,8 +10,8 @@ attach(data)
 set.seed(1)
 train <- 1:78
 test <- 79:104
-y <- data$sales_1
-x <- as.matrix(data[,-1])
+y <- log(data$sales_1) 
+x <- as.matrix(data[,-1]) #Moeten nog log van de prijzen doen
 
 cv.out <- cv.glmnet(x[train, ], y[train], alpha = 0, nfolds=6)
 plot(cv.out)
