@@ -18,7 +18,7 @@ data[,2:17] <- log(data[,2:17])
 
 ###Data selection
 #Full data range (CHANGE SALES_X)
-y <- data$sales_8[3:104]
+y <- data$sales_1[3:104]
 
 colselect0 <-c("price_1","price_2","price_3","price_4","price_5","price_6","price_7","price_8","promo_1","promo_2","promo_3","promo_4","promo_5","promo_6","promo_7","promo_8","promo_f","promo_s","season_2","season_3","season_4") 
   c("sales_1","sales_2","sales_3","sales_4","sales_5","sales_6","sales_7","sales_8","price_1","price_2","price_3","price_4","price_5","price_6","price_7","price_8","promo_1","promo_2","promo_3","promo_4","promo_5","promo_6","promo_7","promo_8","sales_f","promo_f","sales_s","promo_s","season")
@@ -43,25 +43,21 @@ y_train <- y[1:76]
 y_test <- y[77:102]
 
 #CV
-cv.out <- cv.glmnet(x_train, y_train, alpha = 1, nfolds=6)
+cv.out <- cv.glmnet(x_train, y_train, alpha = 0, nfolds=6)
 plot(cv.out)
 bestlam <- cv.out$lambda.min
 bestlam
 
-ridge.reg <- glmnet(x_train, y_train, alpha = 1, lambda=bestlam)
+ridge.reg <- glmnet(x_train, y_train, alpha = 0, lambda=bestlam)
 ridge.pred <- predict(ridge.reg, s = bestlam, newx = x_test)
 
 #RMSE
 sqrt(mean((ridge.pred - y_test)^2))
 
-ridge.reg$beta
-
 
 #Init coefficient matrix
-matrix <- matrix(data=NA, nrow=59, ncol=9)
-matrix[,1] <- colnames(x_total)
-matrix[,9] <- as.vector(ridge.reg$beta)
-
-
+#matrix <- matrix(data=NA, nrow=59, ncol=9)
+#matrix[,1] <- colnames(x_total)
+#matrix[,9] <- as.vector(ridge.reg$beta)
 
 
